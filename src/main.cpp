@@ -14,9 +14,14 @@ int main() {
   Renderer renderer(kScreenWidth, kScreenHeight, kGridWidth, kGridHeight);
   Controller controller;
   Game game(kGridWidth, kGridHeight);
-  game.Run(controller, renderer, kMsPerFrame);
-  std::cout << "Game has terminated successfully!\n";
+  TTF_Init();
+  TTF_Font* font = TTF_OpenFont("../RobotoMono.ttf", 24);
+
+  game.RunGame(controller, renderer, font, kMsPerFrame);
+  std::cout << "Player name: " << game.GetPlayerName() << "\n";
   std::cout << "Score: " << game.GetScore() << "\n";
   std::cout << "Size: " << game.GetSize() << "\n";
+  std::cout << "Game has terminated successfully!\n";
+
   return 0;
 }
